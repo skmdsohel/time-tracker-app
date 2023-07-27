@@ -1,0 +1,29 @@
+<div class="flex justify-center">
+  <div class="wrapper flex flex-col">
+    <div class="flex flex-row justify-between bg-white rounded-[25px] p-6 w-[1000px] mt-8 shadow-lg">
+      <div class="flex flex-col">
+        <h1 class="mb-2 text-[20px]"><b>{{item.title}}</b></h1>
+        <h4 class=" text-[16px]"><b>History</b></h4>
+        <h4 *ngIf="historyList.length==0 && activeHistory==''" class="text-[14px]">No History Found, click on the start
+          button to track the timer</h4>
+        <h4 *ngIf="activeHistory!=''" class=" text-[14px]">{{activeHistory}}</h4>
+        <div *ngIf="historyList.length>0">
+          <h4 *ngFor="let history of historyList" class=" text-[14px]">{{history}}</h4>
+        </div>
+      </div>
+      <div class="flex flex-row justify-between w-[40%]">
+        <h5 class="py-auto border-l-2 h-[40px] text-2xl pl-4 text-[#5056ED]">
+          {{hr}} : {{min}} : {{sec}}
+        </h5>
+        <div>
+          <button *ngIf="btnStart" class="bg-[#5056ED] text-white h-[40px] py-2 px-8 ml-8 rounded-[25px]"
+            (click)="timerStart()">Start</button>
+          <button *ngIf="!btnStart" class="bg-[#ED5050] text-white h-[40px] py-2 px-8 ml-8 rounded-[25px]"
+            (click)="timerStop()">Stop</button>
+          <button class="bg-gray-300 text-black h-[40px] px-4 rounded-[100%] ml-2"
+            (click)="removeCard(item.id)">X</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
